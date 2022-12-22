@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:range_plus_flutter_app/home/home_page.dart';
 import 'package:range_plus_flutter_app/logIn_screen/create_new_Account.dart';
 import 'package:range_plus_flutter_app/logIn_screen/forget_password.dart';
 import 'package:range_plus_flutter_app/logIn_screen/login_screen.dart';
 import 'package:range_plus_flutter_app/splash_screen/splash_screen.dart';
+import 'package:sizer/sizer.dart';
 
 class HomeTabs extends StatefulWidget {
   const HomeTabs({Key? key}) : super(key: key);
@@ -14,35 +16,60 @@ class HomeTabs extends StatefulWidget {
 }
 
 class _HomeTabsState extends State<HomeTabs> {
-  PersistentTabController _controller =
+  final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.home),
-        title: "Home",
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
+          icon: ImageIcon(
+            const AssetImage('assets/images/home.png'),
+            size: 2.5.h,
+          ),
+          title: "Home",
+          activeColorPrimary: Colors.black,
+          activeColorSecondary: Colors.white,
+          inactiveColorPrimary: CupertinoColors.black,
+          inactiveColorSecondary: Colors.black),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
-        title: "Settings",
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
+          icon: ImageIcon(
+            const AssetImage('assets/images/search.png'),
+            size: 2.5.h,
+          ),
+          title: "Search",
+          activeColorPrimary: Colors.black,
+          activeColorSecondary: Colors.white,
+          inactiveColorPrimary: CupertinoColors.black,
+          inactiveColorSecondary: Colors.black),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.home),
-        title: "Home",
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
+          icon: ImageIcon(
+            const AssetImage('assets/images/ref.png'),
+            size: 2.5.h,
+          ),
+          title: "ref",
+          activeColorPrimary: Colors.black,
+          activeColorSecondary: Colors.white,
+          inactiveColorPrimary: CupertinoColors.black,
+          inactiveColorSecondary: Colors.black),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
-        title: "Settings",
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
+          icon: ImageIcon(
+            const AssetImage('assets/images/persion.png'),
+            size: 2.5.h,
+          ),
+          title: "Profile",
+          activeColorPrimary: Colors.black,
+          activeColorSecondary: Colors.white,
+          inactiveColorPrimary: CupertinoColors.black,
+          inactiveColorSecondary: Colors.black),
+    ];
+  }
+
+  List<Widget> _buildScreens() {
+    return [
+      const HomePage(),
+      const LoginScreen(),
+      const SplashScreen(),
+      const CreateNewAccount()
     ];
   }
 
@@ -54,42 +81,24 @@ class _HomeTabsState extends State<HomeTabs> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Colors.white, // Default is Colors.white.
-      handleAndroidBackButtonPress: true, // Default is true.
-      resizeToAvoidBottomInset:
-          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-      stateManagement: true, // Default is true.
-      hideNavigationBarWhenKeyboardShows:
-          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
-      ),
+      backgroundColor: Colors.white,
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      stateManagement: true,
+      hideNavigationBarWhenKeyboardShows: true,
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: ItemAnimationProperties(
-        // Navigation Bar's items animation properties.
+      itemAnimationProperties: const ItemAnimationProperties(
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      screenTransitionAnimation: ScreenTransitionAnimation(
-        // Screen transition animation on change of selected tab.
+      screenTransitionAnimation: const ScreenTransitionAnimation(
         animateTabTransition: true,
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle:
-          NavBarStyle.style1, // Choose the nav bar style with this property.
+      navBarStyle: NavBarStyle.style7,
     );
     ;
-  }
-
-  List<Widget> _buildScreens() {
-    return [
-      LoginScreen(),
-      ForgatPassword(),
-      SplashScreen(),
-      CreateNewAccount()
-    ];
   }
 }

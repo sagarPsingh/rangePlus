@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:range_plus_flutter_app/logIn_screen/create_new_Account.dart';
+import 'package:range_plus_flutter_app/product_pages/pages/product_screen.dart';
 import 'package:range_plus_flutter_app/splash_screen/splach_screen1.dart';
 import 'package:range_plus_flutter_app/splash_screen/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
+import 'category/pages/category_screen.dart';
+import 'category_details/pages/category_detail_screen.dart';
+import 'commen_card/add_to_cart.dart';
+import 'home/home_page.dart';
 import 'home/home_tabs.dart';
 import 'logIn_screen/forget_password.dart';
 import 'logIn_screen/login_screen.dart';
@@ -27,7 +32,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: HomeTabs(),
+          home: ProductPage(),
         );
       },
     );

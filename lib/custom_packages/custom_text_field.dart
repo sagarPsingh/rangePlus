@@ -36,10 +36,14 @@ class CustomTextField extends StatelessWidget {
             controller: textEditingController,
             obscureText: obscureText,
             decoration: InputDecoration(
-              border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xffD1D1D1), width: 5)),
-              focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xffD1D1D1), width: 2),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide:
+                      const BorderSide(color: Color(0xffD1D1D1), width: 5)),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide:
+                    const BorderSide(color: Color(0xffD1D1D1), width: 2),
               ),
               hintText: hint,
             ),
